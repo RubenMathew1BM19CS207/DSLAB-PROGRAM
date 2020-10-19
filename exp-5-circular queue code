@@ -1,0 +1,73 @@
+#include<stdio.h>
+#define SIZE 5
+ int A[SIZE];
+ int full=-1,rear=-1;
+ 
+ void push()
+ {  int x;
+     if((full==rear+1 )|| (full== 0 && rear==SIZE-1))
+     printf("\n Queue is full \n");
+     else{
+         printf(" enter the element to be inserted : \n");
+         scanf("%d",&x);
+         if(full==-1)
+         full=0;
+         rear=(rear+1)%SIZE;
+         A[rear]=x;
+     }
+ }
+ 
+ int pop()
+ {
+     int x;
+     if(full==-1)
+     printf("\n Queue is empty \n");
+     else{
+            x=A[full];
+            if(full==rear)
+            {
+             full= -1;
+             rear=-1;
+            }
+        else{
+            full= (full+1)%SIZE;
+            }
+             return x;
+         }
+        
+ }
+  void display()
+ {
+     int i;
+     if(full==-1)
+     printf("Queue is empty \n ");
+     else{
+            for(i=full;i!=rear;i=(i+1)%SIZE)
+            {
+             printf("%d  ",A[i]);
+            }
+            printf("% d", A[i]);
+         }
+     
+ }
+ void main()
+ {
+     int ch;
+     printf("\n MENU  ");
+     printf("\n1.Push\n2.Pop\n3.Display\n4.EXIT");
+     
+     do{
+         printf("\nEnter your choice :");
+         scanf("%d",&ch);
+         switch(ch)
+         {
+             case 1: push();
+                     break;
+            case 2:pop();
+                    break;
+            case 3: display();
+                    break;
+         }
+       
+     } while(ch!=4);
+ }
