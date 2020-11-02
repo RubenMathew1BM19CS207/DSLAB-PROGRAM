@@ -63,7 +63,7 @@ else
 }
 }
 while(stack[top]!='#')
-{
+{ 
 postfix[k++]=pop();
 postfix[k]='\0';
 printf("\n postfix expression=%s\n",postfix);
