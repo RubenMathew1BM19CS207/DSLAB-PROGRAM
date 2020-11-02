@@ -2,7 +2,7 @@
 #define MAX 10
 int A[MAX];
 int rear= -1; 
-int front =-1;
+int front =-1; 
 
 void display()
 {
