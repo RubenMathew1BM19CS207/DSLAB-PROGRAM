@@ -2,7 +2,7 @@
 #define SIZE 100
 
 struct student
-{
+{ 
 	int id;
 	int age;
 	int marks;
