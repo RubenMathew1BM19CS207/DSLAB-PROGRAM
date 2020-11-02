@@ -2,7 +2,7 @@
 #include<conio.h>
 
  
-#define MAX 5	 
+#define MAX 5	  
  
 int top=-1,stack[MAX];
 void push();
