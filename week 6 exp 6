@@ -1,0 +1,134 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 5
+void enprior(int);
+void deprior(int);
+void create();
+void check(int);
+void displayqueue();
+
+int pri_que[MAX];
+int front,rear;
+
+void main()
+{
+    int n,ch;
+    
+    printf("1.insert the element into queue\n");
+    printf("2.delete the element from queue\n");
+    printf("3.display queue\n");
+    printf("4.exit\n");
+    
+    create();
+    
+    while (1)
+    {
+        printf("enter your choice\n");
+        scanf("%d",&ch);
+        
+        switch(ch)
+        {
+            case 1:
+                  printf("enter the value to be inserted:\n");
+                  scanf("%d",&n);
+                  enprior(n);
+                  break;
+            case 2:
+                  printf("element deleted\n");
+                  scanf("%d",&n);
+                  deprior(n);
+                  break;
+            case 3:
+                  displayqueue();
+                  break;
+            case 4:
+                  exit(0);
+            default:
+                  printf("entered choice is incorrect, PLEASE ENTER A VALID CHOICE\n");
+        }
+    }    
+}    
+
+void create()
+{
+    front=rear=-1;
+}
+
+void enprior(int data)
+{
+    if(rear>=MAX-1)
+    { printf("queue overflow no more elements can be inserted\n");
+      return;
+    } 
+    if((front==-1)&&(rear==-1))
+    {
+        front++;
+        rear++;
+        pri_que[rear]=data;
+        return;
+    }
+    else
+       check(data);
+       rear++;
+}
+
+void check(int data)
+{
+    int i,j;
+    for(i=0;i<=rear;i++)
+    {
+        if(data>=pri_que[i])
+        {
+            for(j=rear+1;j>i;j--)
+            {
+                pri_que[j]=pri_que[j-1];
+                
+            }
+            pri_que[i]=data;
+            return;
+        }
+    }
+    pri_que[i]=data;
+}
+void deprior(int data)
+{
+    int i;
+    if((front==-1)&&(rear==-1))
+    {
+        printf("queue is empty \n");
+        return;
+    }
+    for(i=0;i<=rear;i++)
+    {
+        if(data==pri_que[i])
+        {
+            for(i=0;i<rear;i++)
+            {
+                pri_que[i]=pri_que[i+1];
+            }
+            pri_que[i]=-99;
+            rear--;
+            if(rear==-1)
+               front=-1;
+               return;
+               
+        }
+    }
+    printf("%d not found in queue for deletion",data);
+}
+
+void displayqueue()
+{
+    if((front==-1)&&(rear==-1))
+    {
+        printf("queue is empty\n");
+        return;
+    }
+    
+    for(; front<=rear;front++)
+     {
+         printf("%d _",pri_que[front]);
+     }
+     front=0;
+     
+}
