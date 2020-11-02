@@ -23,7 +23,7 @@ int pr(char symbol)
     {
         return(2);
         
-    }
+    } 
     else if(symbol=='+'||symbol=='-')
     {
         return(1);
